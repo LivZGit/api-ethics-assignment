@@ -55,9 +55,13 @@ Corrected code:
 def clean_record(record):
 return {
 "age": calculate_age(record["date_of_birth"]),
+
 "zip_code": record["zip_code"][:3] + "\*\*\*",
+
 "job_title": record["job_title"],
+
 "diagnosis_notes": remove_identifiers(record["diagnosis_notes"])
+
 }
 
 cleaned_records = [clean_record(r) for r in records]
