@@ -23,6 +23,7 @@ The first issue is that the script makes repeated API requests without any delay
 Corrected code:
 
 '''
+
 import requests
 import time
 
@@ -42,6 +43,7 @@ response = requests.get(API_URL, params={"page": page, "key": API_KEY})
 
     time.sleep(1)
 
+
 '''
 
 The second issue is that the script stores all raw data permanently, including sensitive and personally identifiable information. This goes against the principle of data minimization and increases privacy risks. The data should be cleaned and anonymized before storing.
@@ -49,6 +51,7 @@ The second issue is that the script stores all raw data permanently, including s
 Corrected code:
 
 '''
+
 def clean_record(record):
 return {
 "age": calculate_age(record["date_of_birth"]),
@@ -60,4 +63,5 @@ return {
 cleaned_records = [clean_record(r) for r in records]
 
 save_to_database(cleaned_records)
+
 '''
